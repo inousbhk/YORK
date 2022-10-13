@@ -61,6 +61,7 @@ n_examples = 3
 
 perturbations = False #whether to add shadows or spotlights to the generate_farames_dataset data
 perturbations_time= "random" #if "random", the perturbations can happen anytime. else, int giving the starting frame
+perturbations_duration = 2 #How many frames does it last
 half= False #whether the shadow or spotlight happens on only half of the frame. if False : whole frame, if True : randomly bottom or top half
 spot_proba = 0.5 #probability for the light level variation to be a spotlight or a shadow. 1 for only spotlights, 0 for only shadows
 spot_factor= 10 #multiplying factor for the spotlight, usually 10**n
