@@ -94,10 +94,10 @@ When called with a python command of the usual format (python Unet_2.py) it trai
 	- the light multiplying factor for the spotlight or the shadow, --spot_factor=10=int (default value) and shadow_factor=0.5=float (default value)
 
 - Training parameters : 
-  - number of epochs : --all_epochs_same=False=bool if you want all the training steps to have different numbers of epochs 9default to True). In this case, you must enter --n_epochs_0=m=int --n_epochs_1=n=int --n_epochs_2=k=int. Or you can let the default value for all_epochs_same (True) and just enter --n_epochs=n=int (default 1, to run a test).
-  - learning rate : --LR=0.01=float (default to 0.001, best results)
-  - batch size : --batch_size=64=int (default value)
-  - number of batches : --nb_batches=1=int (default value)
+	- number of epochs : --all_epochs_same=False=bool if you want all the training steps to have different numbers of epochs 9default to True). In this case, you must enter --n_epochs_0=m=int --n_epochs_1=n=int --n_epochs_2=k=int. Or you can let the default value for all_epochs_same (True) and just enter --n_epochs=n=int (default 1, to run a test).
+	- learning rate : --LR=0.01=float (default to 0.001, best results)
+	- batch size : --batch_size=64=int (default value)
+	- number of batches : --nb_batches=1=int (default value)
 		
 
 - Results parameters 
@@ -106,3 +106,7 @@ When called with a python command of the usual format (python Unet_2.py) it trai
 	- photoreceptor model's parameters to plot : --plot_params=[alpha,beta,gamma]=str. The parameters will be plot during the training on the same figure. Useful to change their range when tuning the PR model.
 		
 Those are the most used parameters, but every constant defined in the beginning of Unet_2 can be changer using the same syntax --parameter_value=value=type. (I am passing the type because I had some problems with the read_args function automatically finding the type so I just pass it). In the Unet script, the values of the parameters are changed when the function read_args(globals) is called. After that, the directories are defined depending on the parameters, and the given folder name.
+
+- Examples of command :
+	- If you want to train the Unet, without the photoreceptor model, on task 2, with 5-frames movies with a *0.1 shadow appearing on two random frames, for 300, 200 and 100 epochs respectively : python Unet_2.py --perturbations=True=bool --spot_proba=0-int --shadow_factor=0.1=float --all_epochs_same=False=bool --n_epochs_0=300 --n_epochs_1=200 --n_epochs_2=100
+	- If you want to train the PR+Unet model, with 100-frames movies, on task 2, with a *10**5 spotlight appearing on the last 5 frames, with 500 epochs for every step : python Unet_2.py --movie_duration=100=int --spot_proba=1=int --spot_factor=100000=int
